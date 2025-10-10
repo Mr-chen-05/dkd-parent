@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dkd.manage.mapper.TaskCollectMapper">
+
+    <resultMap id="BaseResultMap" type="com.dkd.manage.domain.TaskCollect">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id" />
+            <result property="finishCount" column="finish_count" />
+            <result property="progressCount" column="progress_count" />
+            <result property="cancelCount" column="cancel_count" />
+            <result property="collectDate" column="collect_date" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,finish_count,progress_count,cancel_count,collect_date
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tb_task_collect
+        where  id = #{id} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tb_task_collect
+        where  id = #{id} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.dkd.manage.domain.TaskCollect" useGeneratedKeys="true">
+        insert into tb_task_collect
+        ( id,user_id,finish_count,progress_count,cancel_count,collect_date)
+        values (#{id},#{userId},#{finishCount},#{progressCount},#{cancelCount},#{collectDate})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.dkd.manage.domain.TaskCollect" useGeneratedKeys="true">
+        insert into tb_task_collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="userId != null">user_id,</if>
+                <if test="finishCount != null">finish_count,</if>
+                <if test="progressCount != null">progress_count,</if>
+                <if test="cancelCount != null">cancel_count,</if>
+                <if test="collectDate != null">collect_date,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id},</if>
+                <if test="userId != null">#{userId},</if>
+                <if test="finishCount != null">#{finishCount},</if>
+                <if test="progressCount != null">#{progressCount},</if>
+                <if test="cancelCount != null">#{cancelCount},</if>
+                <if test="collectDate != null">#{collectDate},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.dkd.manage.domain.TaskCollect">
+        update tb_task_collect
+        <set>
+                <if test="userId != null">
+                    user_id = #{userId},
+                </if>
+                <if test="finishCount != null">
+                    finish_count = #{finishCount},
+                </if>
+                <if test="progressCount != null">
+                    progress_count = #{progressCount},
+                </if>
+                <if test="cancelCount != null">
+                    cancel_count = #{cancelCount},
+                </if>
+                <if test="collectDate != null">
+                    collect_date = #{collectDate},
+                </if>
+        </set>
+        where   id = #{id} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dkd.manage.domain.TaskCollect">
+        update tb_task_collect
+        set 
+            user_id =  #{userId},
+            finish_count =  #{finishCount},
+            progress_count =  #{progressCount},
+            cancel_count =  #{cancelCount},
+            collect_date =  #{collectDate}
+        where   id = #{id} 
+    </update>
+</mapper>
