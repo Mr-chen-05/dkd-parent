@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>velocity快速入门</title>
+</head>
+<body>
+
+<h3>心怀梦想，坚持不懈，成功即在前方。${message}</h3>
+
+    ## 定义变量
+    #set($name = "Velocity")
+
+    ## 输出变量
+第一种情况:${name}Service <br>
+第二种情况:$nameService <br> ## 不推荐第二种写法
+
+    ## 获取区域对象中的数据
+    $region <br>
+区域ID: $region.id <br>
+区域名称: $region.regionName <br>
+
+    ## 定义一个集合
+    #set($list=["春", "夏", "秋", "冬"])
+
+    ## 遍历循环
+    #foreach($item in $list)
+    序号：[$foreach.count] $item <br> ## count 从1开始 index 从0开始
+    #end
+
+    ## 遍历区域集合
+    #foreach($region in $regionList)
+    区域ID: $region.id
+    区域名称: $region.regionName <br>
+    #end
+
+    ##定义成绩变量
+    #set($score = 80)
+    ## if判断
+    #if($score >= 60)
+    成绩及格
+    #elseif($score < 60)
+    成绩不及格
+    #else
+    回家种地
+    #end
+##其他的判断条件：
+
+##```velocity
+##    ## 对象obj不为空才会执行里面的逻辑
+##    #if($obj) ..... #end
+##
+##    ## 对象obj为空才会执行里面的逻辑
+##    #if(!$obj) ..... #end
+##```
+
+##在条件判断中，velocity支持常见的关系操作符，比如：`&&(与), ||(或), !(非)`
+
+
+</body>
+</html>
