@@ -75,7 +75,7 @@ public class TaskDetailsController extends BaseController
     {
         List<TaskDetails> list = taskDetailsService.selectTaskDetailsList(taskDetails);
         ExcelUtil<TaskDetails> util = new ExcelUtil<TaskDetails>(TaskDetails.class);
-        util.exportExcel(response, list, "工单详情数据");
+        util.exportEasyExcel(response, list, "工单详情数据");
     }
 
     /**

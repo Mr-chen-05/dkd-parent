@@ -71,7 +71,7 @@ public class NodeController extends BaseController
     {
         List<Node> list = nodeService.selectNodeList(node);
         ExcelUtil<Node> util = new ExcelUtil<Node>(Node.class);
-        util.exportExcel(response, list, "点位管理数据");
+        util.exportEasyExcel(response, list, "点位管理数据");
     }
 
     /**

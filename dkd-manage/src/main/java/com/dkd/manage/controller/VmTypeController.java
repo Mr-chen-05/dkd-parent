@@ -56,7 +56,7 @@ public class VmTypeController extends BaseController
     {
         List<VmType> list = vmTypeService.selectVmTypeList(vmType);
         ExcelUtil<VmType> util = new ExcelUtil<VmType>(VmType.class);
-        util.exportExcel(response, list, "设备类型管理数据");
+        util.exportEasyExcel(response, list, "设备类型管理数据");
     }
 
     /**

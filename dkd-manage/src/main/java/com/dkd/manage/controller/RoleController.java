@@ -56,7 +56,7 @@ public class RoleController extends BaseController
     {
         List<Role> list = roleService.selectRoleList(role);
         ExcelUtil<Role> util = new ExcelUtil<Role>(Role.class);
-        util.exportExcel(response, list, "工单角色数据");
+        util.exportEasyExcel(response, list, "工单角色数据");
     }
 
     /**

@@ -58,7 +58,7 @@ public class PartnerController extends BaseController
     {
         List<Partner> list = partnerService.selectPartnerList(partner);
         ExcelUtil<Partner> util = new ExcelUtil<Partner>(Partner.class);
-        util.exportExcel(response, list, "合作商管理数据");
+        util.exportEasyExcel(response, list, "合作商管理数据");
     }
 
     /**

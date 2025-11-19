@@ -87,7 +87,7 @@ public class EmpController extends BaseController
     {
         List<Emp> list = empService.selectEmpList(emp);
         ExcelUtil<Emp> util = new ExcelUtil<Emp>(Emp.class);
-        util.exportExcel(response, list, "人员列表数据");
+        util.exportEasyExcel(response, list, "人员列表数据");
     }
 
     /**

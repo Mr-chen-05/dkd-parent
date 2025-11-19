@@ -56,7 +56,7 @@ public class SkuClassController extends BaseController
     {
         List<SkuClass> list = skuClassService.selectSkuClassList(skuClass);
         ExcelUtil<SkuClass> util = new ExcelUtil<SkuClass>(SkuClass.class);
-        util.exportExcel(response, list, "商品管理数据");
+        util.exportEasyExcel(response, list, "商品管理数据");
     }
 
     /**

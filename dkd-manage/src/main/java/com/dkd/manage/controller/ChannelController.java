@@ -58,7 +58,7 @@ public class ChannelController extends BaseController
     {
         List<Channel> list = channelService.selectChannelList(channel);
         ExcelUtil<Channel> util = new ExcelUtil<Channel>(Channel.class);
-        util.exportExcel(response, list, "售货机货道数据");
+        util.exportEasyExcel(response, list, "售货机货道数据");
     }
 
     /**

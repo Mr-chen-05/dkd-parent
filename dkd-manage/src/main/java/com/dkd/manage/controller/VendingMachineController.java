@@ -56,7 +56,7 @@ public class VendingMachineController extends BaseController
     {
         List<VendingMachine> list = vendingMachineService.selectVendingMachineList(vendingMachine);
         ExcelUtil<VendingMachine> util = new ExcelUtil<VendingMachine>(VendingMachine.class);
-        util.exportExcel(response, list, "设备管理数据");
+        util.exportEasyExcel(response, list, "设备管理数据");
     }
 
     /**

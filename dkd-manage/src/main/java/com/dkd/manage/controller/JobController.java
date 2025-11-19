@@ -56,7 +56,7 @@ public class JobController extends BaseController
     {
         List<Job> list = jobService.selectJobList(job);
         ExcelUtil<Job> util = new ExcelUtil<Job>(Job.class);
-        util.exportExcel(response, list, "自动补货任务数据");
+        util.exportEasyExcel(response, list, "自动补货任务数据");
     }
 
     /**

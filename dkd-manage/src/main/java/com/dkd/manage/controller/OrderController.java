@@ -62,7 +62,7 @@ public class OrderController extends BaseController {
     public void export(HttpServletResponse response, OrderDto orderDto) {
         List<Order> list = orderService.selectOrderListVO(orderDto);
         ExcelUtil<Order> util = new ExcelUtil<Order>(Order. class);
-        util.exportExcel(response, list, "订单数据");
+        util.exportEasyExcel(response, list, "订单数据");
     }
 
     /**

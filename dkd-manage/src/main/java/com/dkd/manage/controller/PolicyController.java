@@ -56,7 +56,7 @@ public class PolicyController extends BaseController
     {
         List<Policy> list = policyService.selectPolicyList(policy);
         ExcelUtil<Policy> util = new ExcelUtil<Policy>(Policy.class);
-        util.exportExcel(response, list, "策略管理数据");
+        util.exportEasyExcel(response, list, "策略管理数据");
     }
 
     /**

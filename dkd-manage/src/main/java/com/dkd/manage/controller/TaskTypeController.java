@@ -56,7 +56,7 @@ public class TaskTypeController extends BaseController
     {
         List<TaskType> list = taskTypeService.selectTaskTypeList(taskType);
         ExcelUtil<TaskType> util = new ExcelUtil<TaskType>(TaskType.class);
-        util.exportExcel(response, list, "工单类型数据");
+        util.exportEasyExcel(response, list, "工单类型数据");
     }
 
     /**

@@ -59,7 +59,7 @@ public class TaskController extends BaseController
     {
         List<Task> list = taskService.selectTaskList(task);
         ExcelUtil<Task> util = new ExcelUtil<Task>(Task.class);
-        util.exportExcel(response, list, "工单数据");
+        util.exportEasyExcel(response, list, "工单数据");
     }
 
     /**

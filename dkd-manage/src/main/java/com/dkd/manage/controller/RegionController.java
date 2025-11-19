@@ -58,7 +58,7 @@ public class RegionController extends BaseController
     {
         List<Region> list = regionService.selectRegionList(region);
         ExcelUtil<Region> util = new ExcelUtil<Region>(Region.class);
-        util.exportExcel(response, list, "区域管理数据");
+        util.exportEasyExcel(response, list, "区域管理数据");
     }
 
     /**
