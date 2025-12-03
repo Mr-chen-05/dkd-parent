@@ -42,6 +42,9 @@ nbdist/
 *.xml.versionsBackup
 *.swp
 .cursor
+.trae
+.zeabur
+.vscode
 !*/build/*.java
 !*/build/*.html
 !*/build/*.xml

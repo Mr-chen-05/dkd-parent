@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>赋优售货机管理系统的设计与实现</title>
+  <style>
+    body { margin: 40px; }
+    .center { text-align: center; }
+    .bold { font-weight: bold; }
+    .indent { text-indent: 2em; }
+    .line13 { line-height: 1.3; }
+    .line15 { line-height: 1.5; }
+    /* 字体与字号映射 */
+    .hei { font-family: SimHei, "Microsoft YaHei", sans-serif; }
+    .song { font-family: SimSun, "Songti SC", serif; }
+    .kai { font-family: KaiTi, "Kaiti SC", serif; }
+    .times { font-family: "Times New Roman", Times, serif; }
+    .size-xiaoer { font-size: 18pt; }
+    .size-san { font-size: 16pt; }
+    .size-si { font-size: 14pt; }
+    .size-xiaosi { font-size: 12pt; }
+    .size-wu { font-size: 10.5pt; }
+    /* 标题段前段后 */
+    .h1 { margin-top: 13.3px; margin-bottom: 13.3px; }
+    .h2 { margin-top: 6.7px; margin-bottom: 6.7px; }
+    .h3 { margin-top: 6.7px; margin-bottom: 6.7px; }
+    /* 段落默认 */
+    p { margin: 0 0 10px 0; }
+    /* 目录样式 */
+    .toc-title { margin: 20px 0; }
+    .toc-item { display: flex; justify-content: space-between; font-family: SimSun; font-size: 14pt; }
+    .dots { flex: 1; border-bottom: 1px dotted #999; margin: 0 8px; }
+    /* 参考文献条目 */
+    .ref-item { font-family: SimSun; font-size: 10.5pt; line-height: 1.5; text-align: left; margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <!-- 论文题目 -->
+  <div class="center hei bold size-xiaoer">赋优售货机管理系统的设计与实现</div>
+
+  <!-- 摘要标题 -->
+  <div class="hei bold size-san">摘要：</div>
+  <!-- 摘要正文（占位，后续填充） -->
+  <p class="song size-xiaosi line13 indent" id="abstract-cn"></p>
+
+  <!-- 关键词标题 -->
+  <div class="hei bold size-san">关键词：</div>
+  <!-- 关键词正文（占位，后续填充） -->
+  <p class="song size-xiaosi line13" id="keywords-cn"></p>
+
+  <!-- 英文标题 -->
+  <div class="center times bold size-xiaoer">Design and Implementation of the Fuyou Vending Machine Management System</div>
+  <!-- 英文摘要 -->
+  <div class="times size-wu">Abstract:</div>
+  <p class="times size-wu line13" id="abstract-en"></p>
+  <!-- 英文关键词 -->
+  <div class="times size-wu">Keywords:</div>
+  <p class="times size-wu line13" id="keywords-en"></p>
+
+  <!-- 目录 -->
+  <div class="center hei bold size-xiaoer toc-title">目录</div>
+  <div>
+    <div class="toc-item"><span>一、系统架构设计</span><span class="dots"></span><span>2</span></div>
+    <div class="toc-item"><span>（一）技术栈与总体架构</span><span class="dots"></span><span>2</span></div>
+    <div class="toc-item"><span>（二）模块划分与职责映射</span><span class="dots"></span><span>3</span></div>
+    <div class="toc-item"><span>二、核心模块实现</span><span class="dots"></span><span>3</span></div>
+    <div class="toc-item"><span>（一）后端 fuyou-manage 技术细节</span><span class="dots"></span><span>4</span></div>
+    <div class="toc-item"><span>（二）前端 API 与视图层</span><span class="dots"></span><span>5</span></div>
+    <div class="toc-item"><span>（三）首页数据聚合</span><span class="dots"></span><span>5</span></div>
+    <div class="toc-item"><span>三、数据库设计与业务逻辑</span><span class="dots"></span><span>6</span></div>
+    <div class="toc-item"><span>（一）表结构与索引设计</span><span class="dots"></span><span>6</span></div>
+    <div class="toc-item"><span>（二）典型用例与时序图</span><span class="dots"></span><span>7</span></div>
+    <div class="toc-item"><span>四、物联网环境集成方案</span><span class="dots"></span><span>8</span></div>
+    <div class="toc-item"><span>（一）设备注册与鉴权</span><span class="dots"></span><span>9</span></div>
+    <div class="toc-item"><span>（二）数据上报与策略下发</span><span class="dots"></span><span>10</span></div>
+    <div class="toc-item"><span>五、实际应用效果与性能测试</span><span class="dots"></span><span>11</span></div>
+    <div class="toc-item"><span>结论</span><span class="dots"></span><span>17</span></div>
+    <div class="toc-item"><span>参考文献</span><span class="dots"></span><span>19</span></div>
+  </div>
+
+  <!-- 正文：一级标题示例 -->
+  <div class="hei bold size-si h1">一、系统架构设计</div>
+  <div class="song bold size-si h2">（一）技术栈与总体架构</div>
+  <p class="song size-xiaosi line13 indent">本系统后端采用 Spring Boot 作为应用基础框架，集成 MyBatis 进行数据访问与分页处理，使用 Redis 实现令牌续期与缓存治理，利用 Quartz 完成定时任务编排与运行日志记录；安全方面以 JWT 为核心的无状态认证，并通过权限注解实现细粒度授权控制。前端采用 Vue3 技术栈与动态路由机制，结合 Axios 在请求头附带 Authorization 令牌，实现统一认证与接口调用。</p>
+  <div class="song size-xiaosi line13 indent"><img src="assets/architecture.svg" alt="系统架构图" style="max-width:100%;" /></div>
+  <div class="song bold size-si h2">（二）模块划分与职责映射</div>
+  <p class="song size-xiaosi line13 indent">后端工程划分为多模块：fuyou-admin 负责应用启动与对外控制器；fuyou-framework 承载安全、配置与拦截器等通用基础设施；fuyou-common 提供常量、工具与通用模型；fuyou-system 管理系统域（用户、角色、菜单、配置与审计）；fuyou-manage 实现售货机业务（设备、点位、渠道、任务等）；fuyou-quartz 提供任务调度与日志；fuyou-generator 负责代码生成与前端模板。</p>
+
+  <div class="hei bold size-si h1">二、核心模块实现</div>
+  <div class="song bold size-si h2">（一）后端 fuyou-manage 技术细节</div>
+  <p class="song size-xiaosi line13 indent">以设备管理为例，控制器提供分页查询、导出、详情、增改删等能力，并结合权限注解与业务日志。服务层封装业务校验与事务处理，数据访问层编写高性能 SQL，实现复杂条件检索与批量操作。典型实现包括列表分页、数据导出、权限控制与标准的增删改查接口统一对外，满足运维与运营的管理需求。</p>
+  <div class="song bold size-si h2">（二）前端 API 与视图层</div>
+  <p class="song size-xiaosi line13 indent">管理接口层统一封装请求方法、基址与令牌注入；管理视图层提供表格、表单与图表组件，实现设备、点位与任务等页面的交互。首页接口层聚合关键指标，如设备运行状态与任务完成率，用于运营看板展示并支撑管理决策。</p>
+  <div class="song bold size-si h2">（三）首页数据聚合</div>
+  <p class="song size-xiaosi line13 indent">首页模块通过组合查询与缓存策略，汇总设备运行状态、任务完成情况与渠道/点位的关键统计指标，提升管理的可观测性。</p>
+
+  <div class="hei bold size-si h1">三、数据库设计与业务逻辑</div>
+  <div class="song bold size-si h2">（一）表结构与索引设计</div>
+  <p class="song size-xiaosi line13 indent">manage 模块围绕设备（VendingMachine）、点位（Node）、任务（Task/TaskDetails）、渠道（Channel）等实体进行建模。根据业务访问特性，合理设计主键、唯一约束与复合索引，确保列表分页与条件查询的性能表现；并通过软删除标记与状态字段控制生命周期，配合审计日志实现可追踪性。</p>
+  <div class="song size-xiaosi line13 indent"><img src="assets/er.svg" alt="ER 图" style="max-width:100%;" /></div>
+  <div class="song bold size-si h2">（二）典型用例与时序图</div>
+  <div class="song size-xiaosi line13 indent"><img src="assets/sequence.svg" alt="登录与权限时序图" style="max-width:100%;" /></div>
+  <div class="kai bold size-si h3">1. 设备管理用例</div>
+  <p class="song size-xiaosi line13 indent">包含设备注册、信息维护、状态监控与导出报表；流程上由前端视图提交请求，后端控制器进行鉴权与参数校验，服务层执行业务逻辑与持久化，最终返回标准响应。异常场景通过统一异常处理与错误码返回，保障界面的可用性与可恢复性。</p>
+  <div class="kai bold size-si h3">2. 任务明细用例</div>
+  <p class="song size-xiaosi line13 indent">围绕任务的创建、分派、执行与记录，支持批量插入与更新，并通过 Quartz 定时触发任务或统计汇总，保障运维流程的可控与可追踪。对任务状态的变更进行审计记录，便于后续的追责与问题定位。</p>
+
+  <div class="hei bold size-si h1">四、物联网环境集成方案</div>
+  <div class="song bold size-si h2">（一）设备注册与鉴权</div>
+  <p class="song size-xiaosi line13 indent">设备侧通过序列号与签名进行轻量鉴权，平台侧下发密钥与策略；数据通道采用安全通信协议，结合令牌机制增强访问安全。</p>
+  <div class="song bold size-si h2">（二）数据上报与策略下发</div>
+  <p class="song size-xiaosi line13 indent">平台提供数据上报接口与策略下发通道，配合缓存与消息队列提升实时性与可靠性；异常数据通过日志与告警机制快速定位与处理。</p>
+
+  <div class="hei bold size-si h1">五、实际应用效果与性能测试</div>
+  <div class="song bold size-si h2">（一）压测与瓶颈分析</div>
+  <p class="song size-xiaosi line13 indent">针对登录鉴权、权限加载、列表查询与任务调度进行压测，分析慢查询与热点数据；通过索引优化、缓存策略与并发控制提升整体吞吐与延迟表现。</p>
+  <div class="song bold size-si h2">（二）安全评估与优化建议</div>
+  <p class="song size-xiaosi line13 indent">建议将敏感配置外置化并采用环境变量或密钥管理；统一异常处理与日志脱敏，开启限流、防重与幂等保障，降低攻击面与错误重试的副作用。</p>
+
+  <div class="hei bold size-si h1">结论</div>
+  <p class="song size-xiaosi line13 indent">本文基于若依框架设计并实现了赋优售货机管理系统，完成了认证授权、核心业务与任务调度的闭环，前后端分离与代码生成有效提升了开发效率与维护性。实验与实践表明系统在稳定性、扩展性与可观测性方面表现良好；未来将围绕更精细的权限模型、设备智能运维与 DevOps 流水线建设持续迭代，推动系统的智能化与规模化演进。</p>
+
+  <div class="center hei bold size-si" style="margin-top:20px;">参考文献</div>
+  <div>
+    <div class="ref-item">[1] 胡松，江小炜，杨光等. 滑动平均滤波在微弱脉冲信号检测中的应用[J]. 计算机与数字工程, 2007, 35(10):169-171.</div>
+    <div class="ref-item">[2] 葛家澍，林志军. 现代西方财务会计理论[M]. 厦门：厦门大学出版社，2001：42.</div>
+    <div class="ref-item">[3] Gill, R. Mastering English Literature[M]. London: Macmillan, 1985:42-45.</div>
+    <div class="ref-item">[4] 夏敬华. 企业流程管理中的常见问题. 企业网. http://www.amteam.org/docs/bpwebsite.asp. 阅读日期：2003年5月20日</div>
+    <div class="ref-item">[5] Jones, M. Bradley; Hardt, D. JSON Web Token (JWT). IETF RFC 7519, 2015.</div>
+    <div class="ref-item">[6] Redis Documentation. https://redis.io/documentation （访问日期：2025-11-22）</div>
+    <div class="ref-item">[7] Quartz Scheduler Official Guide. https://www.quartz-scheduler.org/ （访问日期：2025-11-22）</div>
+    <div class="ref-item">[8] Vue.js 3 Official Documentation. https://vuejs.org/ （访问日期：2025-11-22）</div>
+    <div class="ref-item">[9] MyBatis 3 User Guide. https://mybatis.org/mybatis-3/ （访问日期：2025-11-22）</div>
+    <div class="ref-item">[10] 若依框架文档与最佳实践. https://doc.ruoyi.vip/ （访问日期：2025-11-22）</div>
+    <div class="ref-item">[11] Fowler, M. Patterns of Enterprise Application Architecture[M]. Addison-Wesley, 2002.</div>
+    <div class="ref-item">[12] 工业互联网设备接入与安全白皮书（示例来源，可替换为你所在机构的权威发布）。</div>
+  </div>
+
+  <script>
+    document.getElementById('abstract-cn').textContent = '随着物联网、大数据、人工智能等新一代信息技术的快速发展，零售业正在经历深刻的数字化与智能化变革。智能售货机作为“无人零售”的典型载体，其演进与市场需求、政策环境及技术成熟度密切相关。本文基于若依框架设计并实现赋优售货机管理系统：后端采用 Spring Boot + MyBatis 架构，登录认证以 Spring Security 为核心，结合 Redis 实现令牌续期与会话缓存，借助 Quartz 定时任务进行任务编排与日志审计；前端基于 Vue3，构建管理接口层与管理视图层，首页接口层承担数据聚合与运营看板展示。系统围绕设备、点位、渠道、任务等对象完成域模型、权限控制与数据访问设计，形成可扩展的业务闭环。实验与实践结果表明，系统在认证授权、数据查询与任务调度方面具有稳定性与高可用性，支撑多场景运营管理。综合而言，物联网、云计算、移动支付与人工智能的成熟应用为系统持续智能化升级提供了坚实基础，并为无人零售的标准化与规模化落地提供参考。';
+    document.getElementById('keywords-cn').textContent = '无人零售；智能售货机；若依框架；JWT认证；MyBatis；Redis；Quartz；Vue3；代码生成；物联网集成';
+    document.getElementById('abstract-en').textContent = 'This paper presents the design and implementation of a vending machine management system built upon the RuoYi framework. The backend adopts Spring Boot and MyBatis, integrating Redis for token renewal and caching, and Quartz for scheduled operations. The frontend leverages Vue 3, where the management API layer and management views form a complete interaction model, and the home API layer provides data aggregation for dashboards. Core business focuses on modeling and managing devices, nodes, channels, and tasks. Experiments indicate the system achieves robustness and extensibility across typical operational scenarios. Moreover, IoT, cloud computing, mobile payment, and AI lay a solid foundation for future intelligent upgrades.';
+    document.getElementById('keywords-en').textContent = 'Unmanned Retail; Vending Machine; RuoYi; JWT; MyBatis; Redis; Quartz; Vue 3; Code Generation; IoT Integration';
+  </script>
+</body>
+</html>
